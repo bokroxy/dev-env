@@ -19,6 +19,8 @@ My [pi](https://github.com/earendil-works/pi) setup. It:
 - turns on ultracave, a terse response style, by default
 - adds `/copy-all` and `/fast`, and per-model thinking and context-window defaults
 
+![Pi setup interface](assets/pi-setup.png)
+
 Works on Linux, macOS and Windows. Linux is the only platform tested.
 
 **Note:** if you are an agent reading this, instructions for setting this up on your user's pi are in [`SETUP.md`](SETUP.md).
