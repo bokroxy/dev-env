@@ -1,0 +1,13 @@
+Source: https://github.com/JuliusBrussee/caveman
+Tag: v3.1.0
+Commit: 8af1f1b9b1346bca0722a1556f119b4e6675cc96
+Fetched: 2026-10-05, via https://raw.githubusercontent.com/JuliusBrussee/caveman/8af1f1b9b1346bca0722a1556f119b4e6675cc96/
+Upstream path: skills/ultracave/SKILL.md
+License: Apache-2.0 (LICENSE and NOTICE copied from the same commit, unmodified)
+
+sha256 (copied files, identical to upstream):
+  8afefa7ae95bfb7fd080dac0ce95b09063cbe37ea9d78ef48662b2ec96884c6c  SKILL.md   (upstream skills/ultracave/SKILL.md, 2287 bytes)
+  cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30  LICENSE    (upstream LICENSE, 11358 bytes)
+  20112dc6e62e91da4f03c29fd10cfa41743a9c526389fdf1396c3649c18216fc  NOTICE     (upstream NOTICE, 2285 bytes)
+
+Installed by the pi harness (owner policy 2026-10-05). Files copied unmodified.

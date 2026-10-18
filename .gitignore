@@ -1,0 +1,48 @@
+# Machine state and secrets: the repo root is the pi agent directory, so everything pi
+# writes next to the tracked files must stay out of git.
+/.env
+/auth.json
+/models.json
+/models-store.json
+/trust.json
+/sessions/
+/logs/
+/archive/
+/backups/
+/crashes.json
+/run-history.jsonl
+/workflows/
+/npm/
+/install/
+/bin/
+/mcp-cache.json
+/mcp-npx-cache.json
+/mcp-onboarding.json
+/mcp-project-approvals.json
+/context-bar.json
+/clef/
+/extensions-disabled/
+/skills-disabled/
+
+# Dependencies and build output
+node_modules/
+
+# Backups and noise
+*.bak
+*.bak-*
+*.log
+.DS_Store
+
+# Tool state of other harnesses
+/.pi/
+/.claude/
+/.joxo/
+/.mcp.json
+/CLAUDE.md
+/JOXO_CONTEXT.md
+.gitnexus/
+
+# Shipped skill (everything else under skills/ stays local)
+/skills/*
+!/skills/ultracave/
+extensions/agent-view/test-artifacts/

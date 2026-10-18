@@ -1,0 +1,11 @@
+{
+  "name": "pi-todo-presentation",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit -p .",
+    "test": "node --test --experimental-strip-types presentation.test.ts",
+    "format": "prettier --write '*.ts' '*.json'",
+    "lint": "prettier --check '*.ts' '*.json'"
+  }
+}

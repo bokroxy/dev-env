@@ -1,0 +1,49 @@
+{
+  "theme": "github-dark-default",
+  "defaultThinkingLevel": "high",
+  "compaction": {
+    "enabled": true,
+    "reserveTokens": 186000,
+    "keepRecentTokens": 20000
+  },
+  "packages": [
+    "npm:pi-mcp-adapter@3.2.0",
+    {
+      "source": "npm:@juicesharp/rpiv-todo@2.13.8",
+      "extensions": []
+    },
+    "npm:pi-lens@4.4.3",
+    "npm:@gotgenes/pi-anthropic-auth@3.4.3",
+    "npm:remote-pi@0.7.0",
+    "npm:@eko24ive/pi-ask@1.2.0",
+    "npm:pi-subagents@0.78.0",
+    "npm:@caveman-ai/middleware@1.0.1"
+  ],
+  "hideThinkingBlock": false,
+  "defaultTools": ["+subagent"],
+  "subagents": {
+    "agentOverrides": {
+      "delegate": {
+        "inheritGlobalContext": true
+      },
+      "worker": {
+        "inheritGlobalContext": true
+      },
+      "reviewer": {
+        "inheritGlobalContext": true
+      },
+      "researcher": {
+        "inheritGlobalContext": true
+      },
+      "scout": {
+        "inheritGlobalContext": true
+      },
+      "oracle": {
+        "inheritGlobalContext": true
+      },
+      "evidence-auditor": {
+        "inheritGlobalContext": true
+      }
+    }
+  }
+}

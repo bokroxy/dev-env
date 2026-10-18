@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "gitnexus": {
+      "command": "npx",
+      "args": ["-y", "gitnexus@1.6.12", "mcp"],
+      "env": {
+        "GITNEXUS_NO_UPDATE_NOTIFIER": "1"
+      },
+      "directTools": true
+    },
+    "firecrawl": {
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp@3.26.0"],
+      "env": {
+        "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}",
+        "FIRECRAWL_NO_SEARCH_FEEDBACK": "1"
+      },
+      "lifecycle": "lazy",
+      "directTools": true,
+      "includeTools": ["firecrawl_scrape"],
+      "toolPrefix": "none"
+    }
+  }
+}

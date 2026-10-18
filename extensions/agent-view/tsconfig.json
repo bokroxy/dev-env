@@ -1,0 +1,27 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@earendil-works/pi-coding-agent": [
+        "../../install/releases/1.0.2/node_modules/@earendil-works/pi-coding-agent/dist/index.d.ts"
+      ],
+      "@earendil-works/pi-agent-core": [
+        "../../install/releases/1.0.2/node_modules/@earendil-works/pi-agent-core/dist/index.d.ts"
+      ],
+      "@earendil-works/pi-ai": [
+        "../../install/releases/1.0.2/node_modules/@earendil-works/pi-ai/dist/compat.d.ts"
+      ],
+      "@earendil-works/pi-tui": [
+        "../../install/releases/1.0.2/node_modules/@earendil-works/pi-tui/dist/index.d.ts"
+      ]
+    }
+  },
+  "include": [
+    "*.ts",
+    "source/**/*.ts",
+    "avatar/**/*.ts",
+    "anim/**/*.ts",
+    "ui/**/*.ts",
+    "tools/*.ts"
+  ]
+}

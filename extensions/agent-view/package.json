@@ -1,0 +1,25 @@
+{
+  "name": "pi-agent-view",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit -p .",
+    "test": "TZ=UTC node --test --experimental-strip-types '**/*.test.ts'",
+    "format": "prettier --write '*.ts' '*.json' 'source/**/*.ts' 'avatar/**/*.ts' 'anim/**/*.ts' 'ui/**/*.ts' 'tools/*.ts'",
+    "lint": "prettier --check '*.ts' '*.json' 'source/**/*.ts' 'avatar/**/*.ts' 'anim/**/*.ts' 'ui/**/*.ts' 'tools/*.ts'",
+    "harness": "node --experimental-strip-types tools/harness.ts",
+    "harness-pty": "python3 -c \"import pty,sys; sys.exit(pty.spawn(sys.argv[1:]))\" node --experimental-strip-types tools/harness.ts",
+    "watch": "node --experimental-strip-types tools/watch.ts",
+    "watch-pty": "AGENTS_WATCH_SECONDS=2 python3 -c \"import pty,sys; sys.exit(pty.spawn(sys.argv[1:]))\" node --experimental-strip-types tools/watch.ts",
+    "prune-durations": "node --experimental-strip-types tools/prune-durations.ts",
+    "perf": "node --experimental-strip-types tools/perf.ts"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "blobatar": "^2.7.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.9",
+    "typescript": "^7.0.2"
+  }
+}
