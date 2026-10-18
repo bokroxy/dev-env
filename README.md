@@ -9,7 +9,8 @@ My [pi](https://github.com/earendil-works/pi) setup. It:
 - adds subagents (8 agent definitions) and an `/agents` live view of their runs
 - adds workflows: multi-agent orchestration in detached workers, with `/workflows`
 - adds an `ask_user` tool that lets the model ask multiple-choice questions
-- adds a custom footer with git state, model and context usage, plus `/context-bar`, `/lg` and `/pr`
+- adds a custom header and footer with git state, model and context usage, plus `/context-bar`, `/lg` and `/pr`
+- collapses the startup listing of skills, prompts, extensions and extension issues to one line each; Ctrl+O expands them
 - adds a todo list shown below the prompt
 - adds turn summaries and `/summary-model`
 - adds Clef decision models (`clef_judge`, `/clef`)

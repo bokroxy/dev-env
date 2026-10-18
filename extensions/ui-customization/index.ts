@@ -11,6 +11,7 @@ import {
   truncateToWidth,
   visibleWidth,
 } from "@earendil-works/pi-tui";
+import { collapseStartupSections } from "./startup-sections.ts";
 import {
   emptyGitInfoState,
   emptyModelInfoState,
@@ -191,6 +192,7 @@ export default function uiCustomization(pi: ExtensionAPI) {
   let requestRender: (() => void) | undefined;
   let activeTui: DashboardTui | undefined;
   let themeRemovalTimers: Array<ReturnType<typeof setTimeout>> = [];
+  let startupExpanded = () => false;
 
   const stopModelListener = pi.events.on(MODEL_INFO_CHANNEL, (value) => {
     if (!isModelInfoState(value)) return;
@@ -211,7 +213,9 @@ export default function uiCustomization(pi: ExtensionAPI) {
     for (const delay of [0, 50, 250, 1_000]) {
       themeRemovalTimers.push(
         setTimeout(() => {
-          if (hideThemesSection(tui)) tui.requestRender(true);
+          const hidden = hideThemesSection(tui);
+          const collapsed = collapseStartupSections(tui, startupExpanded);
+          if (hidden || collapsed) tui.requestRender(true);
         }, delay),
       );
     }
@@ -219,6 +223,14 @@ export default function uiCustomization(pi: ExtensionAPI) {
 
   function install(ctx: ExtensionContext) {
     if (ctx.mode !== "tui") return;
+
+    startupExpanded = () => {
+      try {
+        return ctx.ui.getToolsExpanded();
+      } catch {
+        return false;
+      }
+    };
 
     ctx.ui.setHeader((tui) => {
       activeTui = tui;

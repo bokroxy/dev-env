@@ -93,7 +93,7 @@ Removing an extension means deleting its directory under `extensions/`; nothing 
 
 ## 7. Verify, then report
 
-1. `pi --version`, then start `pi`. There must be no extension load errors in the startup output.
+1. `pi --version`, then start `pi`. The startup listing shows `[Skills]`, `[Prompts]` and `[Extensions]` as one line each, and no `[Extension issues]` line. Press Ctrl+O to expand the sections and read any issue.
 2. `pi list` shows the eight packages with install paths.
 3. Run `/context-bar`, `/ps` and `/workflows` once each; they open without an error.
 4. After the key is set, ask the model to scrape one page with `firecrawl_scrape` and one search with `search`.
