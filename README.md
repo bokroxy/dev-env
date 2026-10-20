@@ -12,6 +12,7 @@ My [pi](https://github.com/earendil-works/pi) setup. It:
 - adds a custom header and footer with git state, model and context usage, plus `/context-bar`, `/lg` and `/pr`
 - collapses the startup listing of skills, prompts, extensions and extension issues to one line each; Ctrl+O expands them
 - adds a todo list shown below the prompt
+- adds a live prompt timer in the spinner and footer, plus a completion timestamp and duration beneath each finished reply ([details](extensions/run-timer/README.md))
 - adds turn summaries and `/summary-model`
 - adds Clef decision models (`clef_judge`, `/clef`)
 - adds the GitNexus code-graph MCP server

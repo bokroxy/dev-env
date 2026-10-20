@@ -1,0 +1,14 @@
+{
+  "name": "run-timer",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "check": "tsc --noEmit -p .",
+    "test": "node --test --experimental-strip-types *.test.ts ../shared/time-format.test.ts"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^1.0.0",
+    "@earendil-works/pi-tui": "^1.0.0",
+    "typescript": "^7.0.2"
+  }
+}

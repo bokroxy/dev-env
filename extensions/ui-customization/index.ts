@@ -11,15 +11,19 @@ import {
   truncateToWidth,
   visibleWidth,
 } from "@earendil-works/pi-tui";
+import { footerTimerText } from "./footer-timer.ts";
 import { collapseStartupSections } from "./startup-sections.ts";
 import {
   emptyGitInfoState,
   emptyModelInfoState,
+  emptyRunTimerState,
   GIT_INFO_CHANNEL,
   MODEL_INFO_CHANNEL,
   REFRESH_CHANNEL,
+  RUN_TIMER_CHANNEL,
   isGitInfoState,
   isModelInfoState,
+  isRunTimerState,
 } from "../shared/dashboard-state.ts";
 
 type Rgb = [number, number, number];
@@ -189,6 +193,7 @@ export default function uiCustomization(pi: ExtensionAPI) {
   let title = "pi";
   let modelInfo = emptyModelInfoState();
   let gitInfo = emptyGitInfoState();
+  let runTimer = emptyRunTimerState();
   let requestRender: (() => void) | undefined;
   let activeTui: DashboardTui | undefined;
   let themeRemovalTimers: Array<ReturnType<typeof setTimeout>> = [];
@@ -203,6 +208,12 @@ export default function uiCustomization(pi: ExtensionAPI) {
   const stopGitListener = pi.events.on(GIT_INFO_CHANNEL, (value) => {
     if (!isGitInfoState(value)) return;
     gitInfo = value;
+    requestRender?.();
+  });
+
+  const stopRunTimerListener = pi.events.on(RUN_TIMER_CHANNEL, (value) => {
+    if (!isRunTimerState(value)) return;
+    runTimer = value;
     requestRender?.();
   });
 
@@ -284,7 +295,8 @@ export default function uiCustomization(pi: ExtensionAPI) {
             modelInfo.tokensPerSecond === null
               ? "— tok/s"
               : `${Math.round(modelInfo.tokensPerSecond)} tok/s`;
-          const usage = `${contextPercent}%/${contextWindow} · $${modelInfo.cost.toFixed(2)} · ${tps}`;
+          const timer = footerTimerText(runTimer);
+          const usage = `${contextPercent}%/${contextWindow} · $${modelInfo.cost.toFixed(2)} · ${tps}${timer ? ` · ${timer}` : ""}`;
           const model = modelInfo.provider
             ? `${modelInfo.provider}/${modelInfo.modelId} · ${modelInfo.thinking}`
             : modelInfo.modelId;
@@ -318,6 +330,7 @@ export default function uiCustomization(pi: ExtensionAPI) {
     title = formatDirectory(ctx.cwd);
     modelInfo = emptyModelInfoState();
     gitInfo = emptyGitInfoState();
+    runTimer = emptyRunTimerState();
     install(ctx);
   });
 
@@ -328,6 +341,7 @@ export default function uiCustomization(pi: ExtensionAPI) {
   pi.on("session_shutdown", (_event, ctx) => {
     stopModelListener();
     stopGitListener();
+    stopRunTimerListener();
     for (const timer of themeRemovalTimers) clearTimeout(timer);
     themeRemovalTimers = [];
     activeTui = undefined;

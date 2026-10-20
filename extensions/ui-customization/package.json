@@ -3,7 +3,7 @@
   "scripts": {
     "check": "tsc --noEmit -p .",
     "prepare": "effect-tsgo patch",
-    "test": "node --test --experimental-strip-types startup-sections.test.ts"
+    "test": "node --test --experimental-strip-types startup-sections.test.ts footer-timer.test.ts"
   },
   "type": "module",
   "private": true,

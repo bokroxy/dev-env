@@ -1,5 +1,6 @@
 export const MODEL_INFO_CHANNEL = "dashboard:model-info";
 export const GIT_INFO_CHANNEL = "dashboard:git-info";
+export const RUN_TIMER_CHANNEL = "dashboard:run-timer";
 export const REFRESH_CHANNEL = "dashboard:refresh";
 
 export interface ModelInfoState {
@@ -28,6 +29,16 @@ export interface GitInfoState {
   pullRequest: PullRequestInfo | null;
 }
 
+export interface RunTimerState {
+  /** True from the moment a prompt starts until the whole run has settled. */
+  running: boolean;
+  /**
+   * Elapsed milliseconds of the prompt in progress while `running`, otherwise the
+   * duration of the last prompt that finished. Null before any prompt has run.
+   */
+  elapsedMs: number | null;
+}
+
 export function emptyModelInfoState(): ModelInfoState {
   return {
     provider: "",
@@ -50,6 +61,10 @@ export function emptyGitInfoState(): GitInfoState {
     changedFiles: 0,
     pullRequest: null,
   };
+}
+
+export function emptyRunTimerState(): RunTimerState {
+  return { running: false, elapsedMs: null };
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -84,6 +99,14 @@ function isPullRequestInfo(value: unknown): value is PullRequestInfo {
     typeof value.number === "number" &&
     typeof value.url === "string" &&
     typeof value.isDraft === "boolean"
+  );
+}
+
+export function isRunTimerState(value: unknown): value is RunTimerState {
+  if (!isRecord(value)) return false;
+
+  return (
+    typeof value.running === "boolean" && isNullableNumber(value.elapsedMs)
   );
 }
 

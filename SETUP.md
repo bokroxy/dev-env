@@ -96,8 +96,9 @@ Removing an extension means deleting its directory under `extensions/`; nothing 
 1. `pi --version`, then start `pi`. The startup listing shows `[Skills]`, `[Prompts]` and `[Extensions]` as one line each, and no `[Extension issues]` line. Press Ctrl+O to expand the sections and read any issue.
 2. `pi list` shows the eight packages with install paths.
 3. Run `/context-bar`, `/ps` and `/workflows` once each; they open without an error.
-4. After the key is set, ask the model to scrape one page with `firecrawl_scrape` and one search with `search`.
-5. Report to the user what you installed, what you skipped or removed, and anything you could not verify.
+4. Send a prompt. Confirm that the spinner and footer show elapsed time, the footer keeps cost and tokens per second, and a completion timestamp and duration appear beneath the final reply. Resume the session to confirm that the saved timing row reappears. See [`extensions/run-timer/README.md`](extensions/run-timer/README.md) for details.
+5. After the key is set, ask the model to scrape one page with `firecrawl_scrape` and one search with `search`.
+6. Report to the user what you installed, what you skipped or removed, and anything you could not verify.
 
 ## What this setup does not include
 
